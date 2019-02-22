@@ -7,13 +7,24 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    num:[
+      {num:1,name:'hah'},
+      { num: 2, name: 'hah' }
+    ]
   },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
+  },
+  add:function(){
+    let name = this.data.num[0].name;
+    let str = 'num[0].name'
+    this.setData({
+      str:name+'+h'
+    });
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
