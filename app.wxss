@@ -1,10 +1,14 @@
-/**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+.page{
+    background-color: #F6F6F6;
+}
+.img100{
+    width: 100rpx;
+    height: 100rpx;
+}
+.img40{
+    width: 40rpx;
+    height: 40rpx;
+}
+.font36{
+    font-size: 36rpx;
+}

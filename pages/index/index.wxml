@@ -1,15 +1,67 @@
-<!--index.wxml-->
-{{num[0].name}}
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-  <button bindtap='add'>++</button>
+<view class="page">
+    <view class="head">
+        <view class="left">
+            <image class="img100" src="/images/avater_default.png" style="margin:0 10rpx;" mode="aspectFill" />
+            <text class="" style='flex:1'>点击登陆</text>
+        </view>
+        <view class="right">
+            <view class="label">账户余额</view>
+            <view class="money">
+                <text style="font-size:28rpx;vertical-align: text-top;">¥</text>
+                36.8
+            </view>
+            <view class="tips">点击冲值指引</view>
+        </view>
+    </view>
+    <view class="menu">
+        <scroll-view class="" scroll-y="{{true}}" style="height:{{menu_height}}rpx;border-radius:20rpx;overflow: hidden;">
+            <view class="title">
+                <view class="title-date">日期</view>
+                <view style="flex:1;text-align: center;">菜品名称</view>
+            </view>
+            <view class="menu-list">
+                <view class="menu-item" wx:for="{{menu}}" wx:key="index">
+                    <view class="menu-date">{{item.date}}</view>
+                    <view class="menu-name">{{item.name}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="order">
+        <view class="order-now" hover-class="navigator-hover" catchtap="orderHandle">
+            <image class="img40" src="/images/icon-0.png" mode="aspectFill" style="margin-right:20rpx;" />
+            <text class="">我要点餐</text>
+        </view>
+        <view class="order-qrcode hasorder" hover-class="navigator-hover" catchtap="qrHandle">
+            <image class="img40" src="/images/icon-1.png" mode="aspectFill" style="margin-right:20rpx;" />
+            <text class="">二维码取餐</text>
+        </view>
+    </view>
 </view>
+<van-popup show="{{showOrder}}" bind:close="colseModal" custom-style="border-radius:20rpx;width:82%;">
+    <view class="modal modal-order" catchtouchmove="preventTouchMove">
+        <view class="font36" style="font-weight: bold;margin-bottom:10rpx;">2019-02-18 星期一</view>
+        <view class="font36" style="margin-bottom:10rpx;">红烧狮子球、油闷茄子</view>
+        <view class="order-input">
+            <text class="label">数量</text>
+            <view class="input">
+                <van-stepper value="{{number}}" integer bind:change="onChange" />
+            </view>
+        </view>
+        <view class="order-input">
+            <text class="label">价格</text>
+            <view class="input">
+                <text class="red">¥{{price}}</text>
+            </view>
+        </view>
+    </view>
+</van-popup>
+<van-popup show="{{showQr}}" bind:close="colseModal" custom-style="border-radius:20rpx;width:82%;">
+    <view class="modal modal-qrcode" catchtouchmove="preventTouchMove">
+        <view class="font36" style=" font-weight: bold;margin-bottom:20rpx;">2019-02-18 星期一</view>
+        <image src="/images/qrcode.png" />
+        <view class="font36">红烧狮子球、油闷茄子</view>
+        <view class="font36">中午餐  2份  ￥24</view>
+        <view class="tips">注意:  点餐后请按时就餐，当日点餐二维码仅限当日使用，过期无效。</view>
+    </view>
+</van-popup>

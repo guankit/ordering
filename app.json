@@ -1,11 +1,31 @@
 {
-  "pages":[
-    "pages/index/index"
+  "pages": [
+    "pages/index/index",
+    "pages/personal/personal"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#10742D",
+    "navigationBarTitleText": "泰顺广电点餐助手",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F6F6F6"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#FF9900",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "点餐首页",
+        "selectedIconPath": "images/tab_0_selected.png",
+        "iconPath": "images/tab_0.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "个人中心",
+        "selectedIconPath": "images/tab_1_selected.png",
+        "iconPath": "images/tab_1.png"
+      }
+    ]
   }
 }
